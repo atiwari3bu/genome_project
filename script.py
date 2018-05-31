@@ -11,14 +11,21 @@ def makeCopy(query,database):
 def runningSelectedVirus(query,database):
     global line_number
     makeCopy(query,database)
-    fileref=open("copy_{}".format(query),"r")
+    fileref=open("copy_{}".format(query),"r+")
     for row in fileref:
         if(">" in row):
+            virus=row
             line_number+=1
-            continue
+            break
+    fileref.close()    
     
-    print(line_number)
-        
+    fileref=open("copy_{}".format(database),"r+")
+    for row in fileref:
+        if(virus=="row"):
+            print("Virus Found\n")
+            print(row)
+    fileref.close()
+
      
 def main():
     print("\nRun blast normally?\n ")
