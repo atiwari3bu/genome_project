@@ -11,6 +11,7 @@ def makeCopy(query,database):
 def runningSelectedVirus(query,database):
     global line_number
     makeCopy(query,database)
+    
     fileref=open("copy_{}".format(query),"r+")
     for row in fileref:
         if(">" in row):
