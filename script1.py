@@ -1,10 +1,13 @@
 import os
 
 virus_list=[]
+times=0
 
 def creatingQueryFromDatabase(database):
     fileref=open("{}".format(database),"r+")
     for row in fileref:
+        if(row in virus_list):
+            continue
         if(">" in row):
             virus_name=row
             continue
@@ -36,16 +39,22 @@ def removingVirusFromDatabase(virus_name,virus,database):
 
 def runningBlast(database,virus_name):
     virus_name=virus_name.strip('\n')
+    virus_list.append(virus_name)
     virus_name=virus_name.strip('>')
     os.system("makeblastdb -in copy_{} -parse_seqids -dbtype nucl".format(database))
     os.system("blastn -query virus_query.fas -db copy_{} -out {} 2> garbage".format(database,virus_name))
     os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{}".format(database))
             
 def creatingQueryAndBlasting(database):
+    global times
+    times+=1
+    if(times==5): 
+        return 
     (virus_name,virus)=creatingQueryFromDatabase(database)
     os.system("cp {} copy_{}".format(database, database))
     removingVirusFromDatabase(virus_name,virus,database)
     runningBlast(database,virus_name)
+    creatingQueryAndBlasting(database)
 
 def main():
     print("\nThe list of files in your directory is\n")
@@ -55,5 +64,6 @@ def main():
     database="CP_nuc.fas"
     
     creatingQueryAndBlasting(database)
+    print(virus_list)
 
 main()
