@@ -2,11 +2,17 @@ import os
 
 virus_list=[]
 times=0
+flag=0
 
 def creatingQueryFromDatabase(database):
+    global flag
     fileref=open("{}".format(database),"r+")
     for row in fileref:
         if(row in virus_list):
+            flag=1
+            continue
+        if(flag==1):
+            flag=0
             continue
         if(">" in row):
             virus_name=row
@@ -16,9 +22,9 @@ def creatingQueryFromDatabase(database):
         break
     fileref.close()
 
-    query_file="virus_query.fas"
+    #query_file="virus_query.fas"
 
-    fileref=open("{}".format(query_file),"r+")
+    fileref=open("virus_query.fas","r+")
     fileref.write(virus_name)
     fileref.write(virus)
     fileref.close()
@@ -38,8 +44,8 @@ def removingVirusFromDatabase(virus_name,virus,database):
     fileref.close()
 
 def runningBlast(database,virus_name):
-    virus_name=virus_name.strip('\n')
     virus_list.append(virus_name)
+    virus_name=virus_name.strip('\n')
     virus_name=virus_name.strip('>')
     os.system("makeblastdb -in copy_{} -parse_seqids -dbtype nucl".format(database))
     os.system("blastn -query virus_query.fas -db copy_{} -out {} 2> garbage".format(database,virus_name))
@@ -48,7 +54,7 @@ def runningBlast(database,virus_name):
 def creatingQueryAndBlasting(database):
     global times
     times+=1
-    if(times==5): 
+    if(times==160): 
         return 
     (virus_name,virus)=creatingQueryFromDatabase(database)
     os.system("cp {} copy_{}".format(database, database))
