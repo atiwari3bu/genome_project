@@ -1,4 +1,5 @@
 import os
+from time import sleep
 
 virus_list=[]
 times=0
@@ -48,8 +49,7 @@ def runningBlast(database,virus_name):
     virus_name=virus_name.strip('\n')
     virus_name=virus_name.strip('>')
     os.system("makeblastdb -in copy_{} -parse_seqids -dbtype nucl".format(database))
-    os.system("blastn -query virus_query.fas -db copy_{} -out {} 2> garbage".format(database,virus_name))
-    os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{}".format(database))
+    os.system("blastn -query virus_query.fas -db copy_{} -out virus_output/{} 2> garbage".format(database,virus_name))
             
 def creatingQueryAndBlasting(database):
     global times
@@ -60,6 +60,7 @@ def creatingQueryAndBlasting(database):
     os.system("cp {} copy_{}".format(database, database))
     removingVirusFromDatabase(virus_name,virus,database)
     runningBlast(database,virus_name)
+    sleep(0.05)
     creatingQueryAndBlasting(database)
 
 def main():
@@ -68,8 +69,9 @@ def main():
     print("\nEnter the database..\n")
     #database=input()
     database="CP_nuc.fas"
-    
+    os.system("mkdir virus_output"); 
     creatingQueryAndBlasting(database)
+    os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{}".format(database))
     print(virus_list)
 
 main()
