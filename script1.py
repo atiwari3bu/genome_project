@@ -1,5 +1,4 @@
 import os
-from time import sleep
 
 virus_list=[]
 times=0
@@ -62,7 +61,6 @@ def creatingQueryAndBlasting(database):
     os.system("cp {} copy_{}".format(database, database))
     removingVirusFromDatabase(virus_name,virus,database)
     runningBlast(database,virus_name)
-    sleep(0.15)
     creatingQueryAndBlasting(database)
 
 def separatingVirusWithHits(directory,virus_with_hits):
@@ -103,7 +101,7 @@ def findingIntron(directory):
     print(virus_with_no_hits)
     print("\nvirus with hits\n")
     print(virus_with_hits)
-    print(\n\n)
+    print("\n\n")
    
     separatingVirusWithHits(directory,virus_with_hits)
     separatingVIrusWithNoHits(directory,virus_with_no_hits)
@@ -113,8 +111,8 @@ def main():
     print("\nThe list of files in your directory is\n")
     os.system("ls")
     print("\nEnter the database..\n")
-    #database=input()
-    database="CP_nuc.fas"
+    database=input()
+    #database="CP_nuc.fas"
     os.system("mkdir virus_output"); 
     creatingQueryAndBlasting(database)
     os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{}".format(database))
