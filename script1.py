@@ -56,12 +56,58 @@ def creatingQueryAndBlasting(database):
     times+=1
     if(times==160): 
         return 
+    #if(times==5):
+    #    return
     (virus_name,virus)=creatingQueryFromDatabase(database)
     os.system("cp {} copy_{}".format(database, database))
     removingVirusFromDatabase(virus_name,virus,database)
     runningBlast(database,virus_name)
-    sleep(0.05)
+    sleep(0.15)
     creatingQueryAndBlasting(database)
+
+def separatingVirusWithHits(directory,virus_with_hits):
+    os.system("mkdir {}/virus_with_hits".format(directory))
+    directory1=directory+"/virus_with_hits"
+    for files in os.listdir(directory):
+        if files in virus_with_hits:
+            os.system("mv {}/{} {}".format(directory,files,directory1))
+
+def separatingVIrusWithNoHits(directory,virus_with_no_hits):
+    os.system("mkdir {}/virus_with_no_hits".format(directory))
+    directory1=directory+"/virus_with_no_hits"
+    for files in os.listdir(directory):
+        if files in virus_with_no_hits:
+            os.system("mv {}/{} {}".format(directory,files,directory1))
+
+def findingIntron(directory):
+    virus_with_no_hits=[]
+    total_virus=[]
+    virus_with_hits=[]
+   
+    for files in os.listdir(directory):
+        if(files=="virus_with_hits" or files=="virus_with_no_hits"):
+            continue
+        text_file=os.path.join(directory,files)
+        with open(text_file,errors="ignore") as f:
+            total_virus.append(files)
+            for row in f:
+                if("***** No hits found *****" in row):
+                    virus_with_no_hits.append(files)
+
+        f.close()
+    
+    virus_with_hits=[x for x in total_virus if x not in virus_with_no_hits] 
+    print("\nTotal virus in directory\n")
+    print(total_virus)
+    print("\nvirus with no hits\n")
+    print(virus_with_no_hits)
+    print("\nvirus with hits\n")
+    print(virus_with_hits)
+    print(\n\n)
+   
+    separatingVirusWithHits(directory,virus_with_hits)
+    separatingVIrusWithNoHits(directory,virus_with_no_hits)
+
 
 def main():
     print("\nThe list of files in your directory is\n")
@@ -72,6 +118,12 @@ def main():
     os.system("mkdir virus_output"); 
     creatingQueryAndBlasting(database)
     os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{}".format(database))
-    print(virus_list)
+    
+    # Part Three
 
+    print("\nFinding out the intron in the above viruses:\n")
+    directory=os.getcwd()
+    directory+='/virus_output'
+    findingIntron(directory)
+    
 main()
