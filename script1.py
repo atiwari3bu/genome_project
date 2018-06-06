@@ -2,32 +2,56 @@ import os
 
 virus_list=[]
 times=0
-flag=0
+flag1=0
+flag2=0
 
-def creatingQueryFromDatabase(database):
-    global flag
+def creatingQueryFromDatabase(database,query):
+    global flag1
+    global flag2
     fileref=open("{}".format(database),"r+")
     for row in fileref:
         if(row in virus_list):
-            flag=1
+            flag1=1
             continue
-        if(flag==1):
-            flag=0
+        if(flag1==1):
+            flag1=0
             continue
         if(">" in row):
             virus_name=row
             continue
-            
+        
         virus=row
         break
     fileref.close()
 
     #query_file="virus_query.fas"
 
-    fileref=open("virus_query.fas","r+")
-    fileref.write(virus_name)
-    fileref.write(virus)
+    print(virus_name)
+
+    os.system("cp {} copy_{}".format(query,query)) 
+    fileref=open("copy_{}".format(query),"r")
+    lines=fileref.readlines()
     fileref.close()
+    
+    fileref=open("copy_{}".format(query),"w")
+    for line in lines:
+        if(virus_name in line):
+            flag2=1
+            fileref.write(line)
+            continue
+        if(flag2==1):
+            fileref.write(line)
+            flag2=0
+            continue
+        else:
+            continue
+    fileref.close()
+    
+    os.system("cp copy_{} virus_query.fas".format(query))
+    #fileref=open("virus_query.fas","r+")
+    #fileref.write(virus_name)
+    #fileref.write(virus)
+    #fileref.close()
     
     return (virus_name,virus)
 
@@ -37,11 +61,18 @@ def removingVirusFromDatabase(virus_name,virus,database):
     fileref.close()
 
     fileref=open("copy_{}".format(database),"w")
+    #for line in lines:
+    #    if(line in virus_name or line in virus):
+    #        continue
+    #    fileref.write(line)
+    #fileref.close()
+
     for line in lines:
         if(line in virus_name or line in virus):
-            continue
-        fileref.write(line)
+            fileref.write(line)
+        continue
     fileref.close()
+
 
 def runningBlast(database,virus_name):
     virus_list.append(virus_name)
@@ -50,18 +81,18 @@ def runningBlast(database,virus_name):
     os.system("makeblastdb -in copy_{} -parse_seqids -dbtype nucl".format(database))
     os.system("blastn -query virus_query.fas -db copy_{} -out virus_output/{} 2> garbage".format(database,virus_name))
             
-def creatingQueryAndBlasting(database):
+def creatingQueryAndBlasting(database,query):
     global times
     times+=1
     if(times==160): 
         return 
-    #if(times==5):
-    #    return
-    (virus_name,virus)=creatingQueryFromDatabase(database)
+    #if(times==4):
+    #     return
+    (virus_name,virus)=creatingQueryFromDatabase(database,query)
     os.system("cp {} copy_{}".format(database, database))
     removingVirusFromDatabase(virus_name,virus,database)
     runningBlast(database,virus_name)
-    creatingQueryAndBlasting(database)
+    creatingQueryAndBlasting(database,query)
 
 def separatingVirusWithHits(directory,virus_with_hits):
     os.system("mkdir {}/virus_with_hits".format(directory))
@@ -85,11 +116,12 @@ def findingIntron(directory):
     for files in os.listdir(directory):
         if(files=="virus_with_hits" or files=="virus_with_no_hits"):
             continue
+
         text_file=os.path.join(directory,files)
         with open(text_file,errors="ignore") as f:
             total_virus.append(files)
             for row in f:
-                if("***** No hits found *****" in row):
+                if("***** No hits found *****" in row ):
                     virus_with_no_hits.append(files)
 
         f.close()
@@ -111,11 +143,15 @@ def main():
     print("\nThe list of files in your directory is\n")
     os.system("ls")
     print("\nEnter the database..\n")
-    database=input()
-    #database="CP_nuc.fas"
+    #database=input()
+    print("\nEnter the query file...\n")
+    #query=input()
+    database="CP_nuc.fas"
+    query="genomes.fas"
+    #os.system("touch virus_query.fas")
     os.system("mkdir virus_output"); 
-    creatingQueryAndBlasting(database)
-    os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{}".format(database))
+    creatingQueryAndBlasting(database,query)
+    os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{} copy_{} virus_query.fas".format(database,query))
     
     # Part Three
 

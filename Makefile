@@ -3,3 +3,8 @@ all:
 
 open:
 	vim script1.py
+
+clean:
+	rm virus_query.fas 
+	rm -rf virus_output
+
