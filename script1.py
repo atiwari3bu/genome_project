@@ -8,6 +8,7 @@ flag2=0
 def creatingQueryFromDatabase(database,query):
     global flag1
     global flag2
+        
     fileref=open("{}".format(database),"r+")
     for row in fileref:
         if(row in virus_list):
@@ -24,8 +25,6 @@ def creatingQueryFromDatabase(database,query):
         break
     fileref.close()
 
-    #query_file="virus_query.fas"
-
     print(virus_name)
 
     os.system("cp {} copy_{}".format(query,query)) 
@@ -35,9 +34,9 @@ def creatingQueryFromDatabase(database,query):
     
     fileref=open("copy_{}".format(query),"w")
     for line in lines:
-        if(virus_name in line):
-            flag2=1
+        if(line in virus_name):
             fileref.write(line)
+            flag2=1
             continue
         if(flag2==1):
             fileref.write(line)
@@ -61,11 +60,11 @@ def removingVirusFromDatabase(virus_name,virus,database):
     fileref.close()
 
     fileref=open("copy_{}".format(database),"w")
-    #for line in lines:
-    #    if(line in virus_name or line in virus):
-    #        continue
-    #    fileref.write(line)
-    #fileref.close()
+   # for line in lines:
+   #     if(line in virus_name or line in virus):
+   #         continue
+   #     fileref.write(line)
+   # fileref.close()
 
     for line in lines:
         if(line in virus_name or line in virus):
@@ -86,7 +85,7 @@ def creatingQueryAndBlasting(database,query):
     times+=1
     if(times==160): 
         return 
-    #if(times==4):
+    #if(times==10):
     #     return
     (virus_name,virus)=creatingQueryFromDatabase(database,query)
     os.system("cp {} copy_{}".format(database, database))
@@ -116,13 +115,19 @@ def findingIntron(directory):
     for files in os.listdir(directory):
         if(files=="virus_with_hits" or files=="virus_with_no_hits"):
             continue
-
         text_file=os.path.join(directory,files)
         with open(text_file,errors="ignore") as f:
-            total_virus.append(files)
+            f.seek(0)
+            first_char=f.read(1)
+            if not first_char:
+                continue
+            else:
+                f.seek(0)
+            total_virus.append(files) 
             for row in f:
                 if("***** No hits found *****" in row ):
                     virus_with_no_hits.append(files)
+            line_number=0
 
         f.close()
     
@@ -143,21 +148,21 @@ def main():
     print("\nThe list of files in your directory is\n")
     os.system("ls")
     print("\nEnter the database..\n")
-    #database=input()
+  #  database=input()
     print("\nEnter the query file...\n")
-    #query=input()
-    database="CP_nuc.fas"
+#    query=input()
+    database="spliced_reps.fas"
     query="genomes.fas"
-    #os.system("touch virus_query.fas")
+    if("spliced" in database):
+        os.system("python3 script2.py {}".format(database))
     os.system("mkdir virus_output"); 
     creatingQueryAndBlasting(database,query)
     os.system("rm *.nin *.nsd *.nsi *.nog *.nsq *.nhr garbage copy_{} copy_{} virus_query.fas".format(database,query))
-    
     # Part Three
 
     print("\nFinding out the intron in the above viruses:\n")
     directory=os.getcwd()
     directory+='/virus_output'
     findingIntron(directory)
-    
+
 main()
