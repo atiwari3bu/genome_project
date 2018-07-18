@@ -31,37 +31,36 @@ def main():
         for i in range(2500):
             if(flag==0 and hit[i]==0):
                 if(straight_to==0):
-                    #print(" ")
+                #    print(" ")
                     flag=1
                     straight_to=1
                     continue
-               # print(i-1)
+                #print(i-1)
                 flag=1
             if(hit[i]==1 and flag==1):
-                #print("hit :",end=" ")
-                #print(i,end='-',flush=True)
+               # print("hit :",end=" ")
+               # print(i,end='-',flush=True)
                 flag=0
-       
-        intron_end=0  
+        
         straight_to=0
+        to_print=0
         for i in range(2500):
             if(flag==0 and hit[i]==0):
-               # print("intron :",end=" ")
-               # print(i,end='-',flush=True)
-                intron_start=i
                 flag=1
+                intron_start=i
             if(hit[i]==1 and flag==1):
                 if(straight_to==0):
                     flag=0
                     straight_to=1
                     continue
-               # print(i-1,flush=True)
-                intron_end=i-1
+                to_print=1
+                print("intron :",end=" ")
+                print(intron_start,end='-',flush=True)
+                print(i-1,flush=True)
                 flag=0
-        if(intron_end!=0):
-            print(" Intron: {} - {} ".format(intron_start,intron_end))
-        else:
-            print(" No Intron found") 
+       
+        if(to_print==0):
+            print("Intron not found")
 
 main()
 
