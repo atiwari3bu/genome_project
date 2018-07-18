@@ -30,17 +30,17 @@ def runningSelectedVirus(query,database):
      
 def main():
     print("\nRun blast normally?\n ")
-    #a=input()
+    a=input()
     a="no"
-    
+    #
     print("\nThe list of files in your directory is: \n")
     os.system("ls")
     print("\nEnter your query file:\n ")
-    #query=input()
-    query="genomes.fas"
+    query=input()
+    #query="genomes.fas"
     print("\nEnter your database: \n")
-    #database=input()
-    database="CP_nuc.fas"
+    database=input()
+    #database="CP_nuc.fas"
     print("\nCreating nucleotide database for query...\n")
     os.system("makeblastdb -in {} -parse_seqids -dbtype nucl".format(database))
     

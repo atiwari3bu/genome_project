@@ -1,0 +1,91 @@
+BLASTN 2.2.31+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: copy_spliced_reps.fas
+           158 sequences; 173,484 total letters
+
+
+
+Query= MF327567
+
+Length=2216
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KT862248                                                              403     1e-113
+
+
+>KT862248 
+Length=1098
+
+ Score = 403 bits (218),  Expect = 1e-113
+ Identities = 449/562 (80%), Gaps = 10/562 (2%)
+ Strand=Plus/Minus
+
+Query  1542  TACTGGATCATCTCCAAGAGACTCTCCTCTCCATGTAGCCAGCTCAGGTACCATTCCAAG  1601
+             ||||| |||| || ||| |  ||||| || ||||  ||||||||||||||||||||||||
+Sbjct  579   TACTGAATCAGCTTCAACAAGCTCTCTTCCCCATCCAGCCAGCTCAGGTACCATTCCAAG  520
+
+Query  1602  GTCAAATTCGACACCATCGGGACCCACATAGGGTTCTCGTT-GTTCAGCGTAGTATCGGT  1660
+              ||||||||||  |||||||||||||||||||||||   || |||| ||||| |||||||
+Sbjct  519   CTCAAATTCGATCCCATCGGGACCCACATAGGGTTC-GATTCGTTCGGCGTAATATCGGT  461
+
+Query  1661  CGGCGTAGTCGAGAAGCTCGCGGTGTCGGAGGACGAAAGACTTTGGGTCCAGTTCTTGTA  1720
+             ||||||| || || || ||   ||||||||| |  ||   ||||||  ||||| || |||
+Sbjct  460   CGGCGTATTCCAGTAGTTCCTTGTGTCGGAGAATAAATTCCTTTGGAGCCAGTGCTCGTA  401
+
+Query  1721  CAAGTCT-AAGAAACTCGTCGCGACTTTCTGCGCCGACAATCTGGCTCCACTTATTCTCA  1779
+             | || || ||||||||| || |||||||  ||  |||| ||   ||||||  ||||||||
+Sbjct  400   CGAG-CTCAAGAAACTCTTCTCGACTTTGCGCATCGACGATAGAGCTCCAGATATTCTCA  342
+
+Query  1780  GCCGGAGGAAGTCGATCTGAGCCCGGCCTTGCCAACCCGCCTGCAACAACATTTCCATCC  1839
+              | | |||||||| | |||||||||||||||  | ||| ||||||||||| ||||| || 
+Sbjct  341   ACTGAAGGAAGTCCACCTGAGCCCGGCCTTGGAAGCCCCCCTGCAACAACGTTTCCGTCT  282
+
+Query  1840  TTGACTGCATAGTCCCAACCGAACT-CCGCACGACCTCGAGATGGCACAACGTTTGGGTG  1898
+             ||||| ||||| ||||||||   || |||||||||||||||||||||||||||| |||||
+Sbjct  281   TTGACCGCATAATCCCAACC-TTCTCCCGCACGACCTCGAGATGGCACAACGTTCGGGTG  223
+
+Query  1899  GCGGCCTTCGACATCAAAAAGGTCAAGTCTTCGGGACTGTTTCTTTCGTCCGAAATCGAC  1958
+                |||| ||||||||||||   |   || || ||| || |||||  |||| ||||||||
+Sbjct  222   CTTGCCTCCGACATCAAAAAAACCGGATCGTCTGGATTGCTTCTTGTGTCCAAAATCGAC  163
+
+Query  1959  GAAAACATGGAGGTGAGTACCTTCATCAGCGTGATCCTCTCTTCCAATGATGCACTCAGC  2018
+             |||||||||||| ||||||||| |||||||||||||||||| ||||||||| ||||| ||
+Sbjct  162   GAAAACATGGAGATGAGTACCTCCATCAGCGTGATCCTCTCGTCCAATGATACACTCCGC  103
+
+Query  2019  TCCAAG-GCTGCTGATATGCTCGAGAACGGACCACTCAGATAG-GTCGCCAGACTGTGCA  2076
+             |||||| |  |   ||||| |||||||||  |||||||   || || |||  | || |  
+Sbjct  102   TCCAAGAGACGAA-ATATGGTCGAGAACGTCCCACTCATCGAGCGT-GCCGCATTGAGAG  45
+
+Query  2077  TACGTGAGGAGGACATAACGAG  2098
+             || |||||||||||||||||||
+Sbjct  44    TAGGTGAGGAGGACATAACGAG  23
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 374031504
+
+
+  Database: copy_spliced_reps.fas
+    Posted date:  Jul 18, 2018  12:24 PM
+  Number of letters in database: 173,484
+  Number of sequences in database:  158
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

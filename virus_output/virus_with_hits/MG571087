@@ -1,0 +1,189 @@
+BLASTN 2.2.31+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: copy_spliced_reps.fas
+           158 sequences; 173,484 total letters
+
+
+
+Query= MG571087
+
+Length=2194
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KT732803                                                              904     0.0  
+KT732801                                                              730     0.0  
+KT732802                                                              658     0.0  
+
+
+>KT732803 
+Length=1098
+
+ Score = 904 bits (489),  Expect = 0.0
+ Identities = 535/558 (96%), Gaps = 0/558 (0%)
+ Strand=Plus/Minus
+
+Query  1609  CCACTCGTCGATTCCCGGAGCCGCTGACGTGTCAAAGATAGCTCCAGCGGGCTGATCGTA  1668
+             |||||||||||||||||||||||||| ||||||||||| ||||||| ||||||||  |||
+Sbjct  558   CCACTCGTCGATTCCCGGAGCCGCTGTCGTGTCAAAGACAGCTCCAACGGGCTGACTGTA  499
+
+Query  1669  TTCGGGAACTCCGGAGTTCCATTTCCAGTTAGCGTATGCCCGGAAGTTTGGAAAGGACTT  1728
+             |||||||||||||| || |||||||||||||||||| ||||||||||||||||||||   
+Sbjct  498   TTCGGGAACTCCGGTGTCCCATTTCCAGTTAGCGTAGGCCCGGAAGTTTGGAAAGGAGCG  439
+
+Query  1729  GATAAGATCTCGCGTAGCCAGCTGGTCGCAAAAGTGCAGAAACTCGTCAGAAGATCCGCA  1788
+             |||||||||||||| ||||||||||||||||||||||||||||||||||| |||||||||
+Sbjct  438   GATAAGATCTCGCGGAGCCAGCTGGTCGCAAAAGTGCAGAAACTCGTCAGCAGATCCGCA  379
+
+Query  1789  ATGTGCCGCCGAACTCCAGAAATTATCAGGGTCCCAATCGCAGTCTCCGCCCGGTCGTCC  1848
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  378   ATGTGCCGCCGAACTCCAGAAATTATCAGGGTCCCAATCGCAGTCTCCGCCCGGTCGTCC  319
+
+Query  1849  AAGCCCGCCTGCGACAACGTCGCCATCCTTGATCGCGTAGTCGTAAGCCGTCGCTGGAGT  1908
+             ||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||
+Sbjct  318   AAGCCCGCCTGCGACAACGTCGCCATCCTTGATCGCGTAGTCGTAAGCCTTCGCTGGAGT  259
+
+Query  1909  GCGGCCAATAGGCTGGATGTTTGGGTGCTTGCCTCCCACATCGAATACACGAACCTTTCG  1968
+             |||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||
+Sbjct  258   GCGGCCAATAGGCTGGATGTTTGGGTGCTTGCCTCCCACATCGAATACACGAACTTTTCG  199
+
+Query  1969  CGTCGAAAAGAGCCGTCCGAAATCAGTGAATACATGGAAATGAATTCCGCCATCAGCATG  2028
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  198   CGTCGAAAAGAGCCGTCCGAAATCAGTGAATACATGGAAATGAATTCCGCCATCAGCATG  139
+
+Query  2029  CTCCTCTCTTCCAATGACGCACTCAGCTCCCAAGTCTCCAAGCAAATCCACAACCGCCCA  2088
+             ||| |||| |||||||| ||||||||||||||||||||||||||||||||||||||||||
+Sbjct  138   CTCTTCTCGTCCAATGATGCACTCAGCTCCCAAGTCTCCAAGCAAATCCACAACCGCCCA  79
+
+Query  2089  ATAGTCGAAGTCTGGTCCTGCCTGGGAGTAGGTGAAGAGGACATAGCGGCGGTTCTTGAG  2148
+             ||||||||||||||||||||||||||||||||||||||||||||| || || ||||||||
+Sbjct  78    ATAGTCGAAGTCTGGTCCTGCCTGGGAGTAGGTGAAGAGGACATATCGACGATTCTTGAG  19
+
+Query  2149  GTGAAAAGCGCTTGGCAT  2166
+             ||||||| | ||||||||
+Sbjct  18    GTGAAAATCACTTGGCAT  1
+
+
+>KT732801 
+Length=1098
+
+ Score = 730 bits (395),  Expect = 0.0
+ Identities = 510/567 (90%), Gaps = 2/567 (0%)
+ Strand=Plus/Minus
+
+Query  1601  TGTGACAACCACTCGTCGATTCCCGGAGCCGCTGACGTGTCA-AAGATAGCTCCAGCGGG  1659
+             |||||||||||||||||||||||||||||||||||||||||| ||| |||||||| ||||
+Sbjct  566   TGTGACAACCACTCGTCGATTCCCGGAGCCGCTGACGTGTCATAAG-TAGCTCCATCGGG  508
+
+Query  1660  CTGATCGTATTCGGGAACTCCGGAGTTCCATTTCCAGTTAGCGTATGCCCGGAAGTTTGG  1719
+             ||||||||||||||||| |||||  ||  | |||||||| | ||| |||||||| || | 
+Sbjct  507   CTGATCGTATTCGGGAATTCCGGGATTGAACTTCCAGTTTGAGTAGGCCCGGAAATTGGT  448
+
+Query  1720  AAAGGACTTGATAAGATCTCGCGTAGCCAGCTGGTCGCAAAAGTGCAGAAACTCGTCAGA  1779
+              ||   |  ||||| ||||| || |||||||||||||||||||||||||||||| |||||
+Sbjct  447   GAACCCCCGGATAAAATCTCTCGGAGCCAGCTGGTCGCAAAAGTGCAGAAACTCCTCAGA  388
+
+Query  1780  AGATCCGCAATGTGCCGCCGAACTCCAGAAATTATCAGGGTCCCAATCGCAGTCTCCGCC  1839
+             ||||||   ||||| ||||| |  ||||||||||||||||||||||||||||||||||||
+Sbjct  387   AGATCCTGTATGTGTCGCCGCAGCCCAGAAATTATCAGGGTCCCAATCGCAGTCTCCGCC  328
+
+Query  1840  CGGTCGTCCAAGCCCGCCTGCGACAACGTCGCCATCCTTGATCGCGTAGTCGTAAGCCGT  1899
+             ||||||||| ||||| || || ||||| |||||||||||||| |||||||| |||||   
+Sbjct  327   CGGTCGTCCGAGCCCACCCGCAACAACATCGCCATCCTTGATTGCGTAGTCATAAGCTTG  268
+
+Query  1900  CGCTGGAGTGCGGCCAATAGGCTGGATGTTTGGGTGCTTGCCTCCCACATCGAATACACG  1959
+             ||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||
+Sbjct  267   CGCTGGAGTGCGGCCAATAGGCTTGATGTTTGGGTGCTTGCCTCCCACATCGAATACACG  208
+
+Query  1960  AACCTTTCGCGTCGAAAAGAGCCGTCCGAAATCAGTGAATACATGGAAATGAATTCCGCC  2019
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||
+Sbjct  207   AACCTTTCGCGTCGAAAAGAGCCGTCCGAAATCAGTGAATACATGGAAATGAATTCCCCC  148
+
+Query  2020  ATCAGCATGCTCCTCTCTTCCAATGACGCACTCAGCTCCCAAGTCTCCAAGCAAATCCAC  2079
+             |||||| ||  | |||| |||||||| |||||| ||||||| |||||||||||  |||||
+Sbjct  147   ATCAGCGTGTACTTCTCGTCCAATGATGCACTCCGCTCCCATGTCTCCAAGCAGGTCCAC  88
+
+Query  2080  AACCGCCCAATAGTCGAAGTCTGGTCCTGCCTGGGAGTAGGTGAAGAGGACATAGCGGCG  2139
+             ||| ||||||||||||||||| ||||||||||||||||||||||||||||||||||||||
+Sbjct  87    AACTGCCCAATAGTCGAAGTCAGGTCCTGCCTGGGAGTAGGTGAAGAGGACATAGCGGCG  28
+
+Query  2140  GTTCTTGAGGTGAAAAGCGCTTGGCAT  2166
+             ||||||||||||||||| |||||||||
+Sbjct  27    GTTCTTGAGGTGAAAAGAGCTTGGCAT  1
+
+
+>KT732802 
+Length=1098
+
+ Score = 658 bits (356),  Expect = 0.0
+ Identities = 497/567 (88%), Gaps = 2/567 (0%)
+ Strand=Plus/Minus
+
+Query  1601  TGTGACAACCACTCGTCGATTCCCGGAGCCGCTGACGTGTCAAAGATAGCTCCAGCGGGC  1660
+             |||||||||||||| ||||||||||||||||||| ||||||||| | ||| ||| |||||
+Sbjct  566   TGTGACAACCACTCATCGATTCCCGGAGCCGCTGTCGTGTCAAACACAGCGCCATCGGGC  507
+
+Query  1661  TGATCGTATTCGGGAACTCCGGAGTTCCATTTCCAGTTAGCGTATGCCCGGAAGTTTGGA  1720
+             ||||||||| |||  |||| |  |||||||||||| || ||||| |||| ||||||||| 
+Sbjct  506   TGATCGTATACGGCCACTCGGTCGTTCCATTTCCAATTGGCGTAAGCCCTGAAGTTTGGG  447
+
+Query  1721  AAGGACTTGATAAGATCTCGCGTAGCCAGCTGGTCGCAAAAGTGCAGAAACTCGTCAGAA  1780
+             |||  |   | |||||||| || |||||| |||||||||||||||||||||||||||| |
+Sbjct  446   AAGCCCCGCACAAGATCTCTCGGAGCCAGTTGGTCGCAAAAGTGCAGAAACTCGTCAGCA  387
+
+Query  1781  GATCC-GCAATGTGCCGCCGAACTCCAGAAATTATCAGGGTCCCAATCGCAGTCTCCGCC  1839
+             ||||| || ||||| ||||| |  |||||| |||||||||||||||||||| ||||||||
+Sbjct  386   GATCCCGC-ATGTGTCGCCGCAGACCAGAAGTTATCAGGGTCCCAATCGCAATCTCCGCC  328
+
+Query  1840  CGGTCGTCCAAGCCCGCCTGCGACAACGTCGCCATCCTTGATCGCGTAGTCGTAAGCCGT  1899
+             |||||| |||||||| || || ||||| ||||||||||||||||||||||| |||||   
+Sbjct  327   CGGTCGCCCAAGCCCTCCCGCAACAACATCGCCATCCTTGATCGCGTAGTCATAAGCTTG  268
+
+Query  1900  CGCTGGAGTGCGGCCAATAGGCTGGATGTTTGGGTGCTTGCCTCCCACATCGAATACACG  1959
+             ||||||||||||||||||||||| |||||||||||||||||||||||||||||||| |||
+Sbjct  267   CGCTGGAGTGCGGCCAATAGGCTTGATGTTTGGGTGCTTGCCTCCCACATCGAATATACG  208
+
+Query  1960  AACCTTTCGCGTCGAAAAGAGCCGTCCGAAATCAGTGAATACATGGAAATGAATTCCGCC  2019
+             |||||||| |||||||||||||||||||||||| | |||||||||| |||||||||||||
+Sbjct  207   AACCTTTCTCGTCGAAAAGAGCCGTCCGAAATCTGCGAATACATGGTAATGAATTCCGCC  148
+
+Query  2020  ATCAGCATGCTCCTCTCTTCCAATGACGCACTCAGCTCCCAAGTCTCCAAGCAAATCCAC  2079
+             |||  | |||  ||||| |||||||| |||||||||||||| ||||||||| |  |||||
+Sbjct  147   ATCTTCGTGCAGCTCTCGTCCAATGATGCACTCAGCTCCCAGGTCTCCAAGTAGGTCCAC  88
+
+Query  2080  AACCGCCCAATAGTCGAAGTCTGGTCCTGCCTGGGAGTAGGTGAAGAGGACATAGCGGCG  2139
+             ||| |||||||| ||||||||| |||||| ||||| |||||||||||||||||| | |||
+Sbjct  87    AACTGCCCAATAATCGAAGTCTTGTCCTGACTGGGCGTAGGTGAAGAGGACATATCTGCG  28
+
+Query  2140  GTTCTTGAGGTGAAAAGCGCTTGGCAT  2166
+             ||||||||||||||||  |||||||||
+Sbjct  27    GTTCTTGAGGTGAAAATTGCTTGGCAT  1
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 370284376
+
+
+  Database: copy_spliced_reps.fas
+    Posted date:  Jul 18, 2018  12:24 PM
+  Number of letters in database: 173,484
+  Number of sequences in database:  158
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

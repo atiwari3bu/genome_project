@@ -24,7 +24,6 @@ def creatingQueryFromDatabase(database,query):
         virus=row
         break
     fileref.close()
-
     print(virus_name)
 
     os.system("cp {} copy_{}".format(query,query)) 
@@ -60,17 +59,17 @@ def removingVirusFromDatabase(virus_name,virus,database):
     fileref.close()
 
     fileref=open("copy_{}".format(database),"w")
-   # for line in lines:
-   #     if(line in virus_name or line in virus):
-   #         continue
-   #     fileref.write(line)
-   # fileref.close()
-
-    for line in lines:
+    for line in lines:     # For finding the intron intuitively
         if(line in virus_name or line in virus):
-            fileref.write(line)
-        continue
+            continue
+        fileref.write(line)
     fileref.close()
+
+    #for line in lines:     # For finding the actual intron
+    #    if(line in virus_name or line in virus):
+    #        fileref.write(line)
+    #    continue
+    #fileref.close()
 
 
 def runningBlast(database,virus_name):
@@ -78,14 +77,15 @@ def runningBlast(database,virus_name):
     virus_name=virus_name.strip('\n')
     virus_name=virus_name.strip('>')
     os.system("makeblastdb -in copy_{} -parse_seqids -dbtype nucl".format(database))
-    os.system("blastn -query virus_query.fas -db copy_{} -out virus_output/{} 2> garbage".format(database,virus_name))
-            
+    #os.system("blastn -query virus_query.fas -db copy_{} -evalue=1e-1 -word_size=12 -out virus_output/{} 2> garbage".format(database,virus_name))
+    os.system("blastn -query virus_query.fas -evalue=1e-75 -db  copy_{} -out virus_output/{} 2> garbage".format(database,virus_name))
+
 def creatingQueryAndBlasting(database,query):
     global times
     times+=1
     if(times==160): 
         return 
-    #if(times==10):
+    #if(times==3):
     #     return
     (virus_name,virus)=creatingQueryFromDatabase(database,query)
     os.system("cp {} copy_{}".format(database, database))
